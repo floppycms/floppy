@@ -1,0 +1,14 @@
+{
+    "name": "easycms/easycms",
+    "authors": [{
+        "name": "walentin shehovtsov",
+        "email": "shehovcov.w@mail.ru"
+    }],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core",
+            "Core\\DI\\": "core/DI"
+        }
+    }
+}
