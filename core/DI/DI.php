@@ -46,8 +46,19 @@ class DI
      * @return boolean true - если зависимость с заданным ключем существует и
      * false - в противном случае
      */
-    private function has($key)
+    public function has($key)
     {
         return isset($this->container[$key]);
+    }
+
+    public function push($key, $element = [])
+    {
+        if(!$this->has($key)){
+            $this->set($key, []);
+        }
+
+        if(!empty($element)){
+            $this->container[$key][$element['key']] = $element['value'];
+        }
     }
 }

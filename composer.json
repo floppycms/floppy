@@ -8,7 +8,9 @@
     "autoload": {
         "psr-4": {
             "Core\\": "core",
-            "Core\\DI\\": "core/DI"
+            "Core\\DI\\": "core/DI",
+            "Cms\\": "cms",
+            "Admin\\": "admin"
         }
     }
 }

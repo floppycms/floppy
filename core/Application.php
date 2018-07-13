@@ -2,6 +2,9 @@
 
 namespace Core;
 
+use Core\Helpers\RequestHelper;
+use Core\Libs\Router\DispatchRoute;
+
 class Application
 {
 
@@ -12,6 +15,8 @@ class Application
      */
     private $di;
 
+    public $router;
+
     /**
      * Конструктор
      *
@@ -20,6 +25,7 @@ class Application
     public function __construct(\Core\DI\DI $di)
     {
         $this->di = $di;
+        $this->router = $this->di->get('router');
     }
 
     /**
@@ -29,6 +35,19 @@ class Application
      */
     public function run()
     {
+        //подключение роутов
+        require_once __DIR__ . '/../'. strtolower(ENV) .'/routes.php';
 
+        $routerDispatch = $this->router->dispatch(RequestHelper::getMethod(), RequestHelper::getPathUrl());
+        
+        if($routerDispatch == null){
+            $routerDispatch = new DispatchRoute('ErrorController:notFound');
+        }
+
+        list($class, $action) = explode(':', $routerDispatch->getController(), 2);
+
+        $controller = '\\'. ENV .'\\Controllers\\' . $class;
+
+        call_user_func_array([new $controller($this->di), $action], $routerDispatch->getParams());
     }
 }

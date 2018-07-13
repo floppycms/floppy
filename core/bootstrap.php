@@ -9,7 +9,13 @@ try{
 
     $di = new DI();
 
-    //ToDo загрузка зависимостей в контейнер
+    //загрузка зависимостей в контейнер
+    $services = require __DIR__ . '/Config/service.php';
+
+    foreach($services as $service){
+        $provider = new $service($di);
+        $provider->init();
+    }
 
     $app = new Application($di);
     $app->run();
