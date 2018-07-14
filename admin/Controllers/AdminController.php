@@ -21,6 +21,8 @@ class AdminController extends Controller
     {
         parent::__construct($di);
 
+        $this->load->language('admin/menu');
+
         $this->auth = new Auth();
 
         $this->data['APP_NAME'] = 'FlexyCMS';

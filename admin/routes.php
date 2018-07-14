@@ -27,3 +27,7 @@ $this->router->add('post-edit', '/admin/post/edit/(id:int)', 'PostController:edi
 $this->router->add('post-update', '/admin/post/update/', 'PostController:update', 'POST');  //обновление записи
 
 $this->router->add('post-delete', '/admin/post/delete/(id:int)', 'PostController:delete');  //удаление записи
+
+//настройки
+$this->router->add('settings', '/admin/setting/', 'SettingController:index');  //список настроек сайта
+$this->router->add('settings-update', '/admin/setting/', 'SettingController:update', 'POST');  //обновление настроек сайта

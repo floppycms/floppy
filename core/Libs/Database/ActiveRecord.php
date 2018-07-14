@@ -89,6 +89,27 @@ trait ActiveRecord
     }
 
     /**
+     * Получение записи по заданному полю
+     *
+     * @param string $column Поле
+     * @param string $value Значение
+     * @return array
+     */
+    public function findWhere($column, $value)
+    {
+        $row = $this->db->query(
+            $this->queryBuilder
+                ->select()
+                ->from($this->getTable())
+                ->where($column, $value)
+                ->sql(),
+            $this->queryBuilder->values
+        );
+
+        return isset($row[0]) ? $row[0] : null;
+    }
+
+    /**
      * Получает все записи из таблицы БД
      *
      * @return array|null

@@ -6,10 +6,13 @@ use Core\Libs\Template\Theme;
 
 class View
 {
+    public $di;
+
     protected $theme;
 
-    public function __construct()
+    public function __construct(\Core\DI\DI $di)
     {
+        $this->di = $di;
         $this->theme = new Theme();
     }
 
@@ -30,6 +33,9 @@ class View
                 sprintf('Не найден шаблон "%s" в "%s".', $template, $templatePath)
             );
         }
+
+        //загрузка языков
+        $vars['lang'] = $this->di->get('language');
 
         $this->theme->setData($vars);
         extract($vars);

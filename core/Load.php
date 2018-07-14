@@ -7,7 +7,7 @@ class Load
 
     const MASK_MODEL_REPOSITORY = '\%s\Models\%s\%sRepository';
 
-    const MASK_FILE_LANGUAGE = 'Lang/%s/%s.json';
+    const MASK_FILE_LANGUAGE = 'Language/%s/%s.json';
 
     public $di;
 
@@ -48,6 +48,12 @@ class Load
         return false;
     }
 
+    /**
+     * Загрузка файла языка
+     *
+     * @param string $path
+     * @return void
+     */
     public function language($path)
     {
         $langFile = sprintf(
@@ -57,8 +63,15 @@ class Load
 
         $data = json_decode(file_get_contents($langFile));
 
+        $arr = explode('/', $path);
+        $langName = $arr[0];
+        
+        for($i = 1; $i < count($arr); $i++){
+            $langName .= ucfirst($arr[$i]);
+        }
+
         $language = $this->di->get('language') ?: new \stdClass();
-        $language->{$path} = $data;
+        $language->{$langName} = $data;
 
         $this->di->set('language', $language);
 

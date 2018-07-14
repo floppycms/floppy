@@ -6,31 +6,31 @@
               <li class="nav-item">
                 <a class="nav-link active" href="/admin/">
                   <span data-feather="home"></span>
-                  Главная <span class="sr-only">(current)</span>
+                  <?= $lang->adminMenu->main ?> <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/admin/post/">
                   <span data-feather="file"></span>
-                  Записи
+                  <?= $lang->adminMenu->posts ?>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/admin/page/">
                   <span data-feather="shopping-cart"></span>
-                  Страницы
+                  <?= $lang->adminMenu->pages ?>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="users"></span>
-                  Пользователи
+                  <?= $lang->adminMenu->users ?>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/admin/setting/">
                   <span data-feather="bar-chart-2"></span>
-                  Настройки
+                  <?= $lang->adminMenu->settings ?>
                 </a>
               </li>
             </ul>
