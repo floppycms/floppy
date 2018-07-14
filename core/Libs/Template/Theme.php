@@ -28,12 +28,19 @@ class Theme
      */
     protected $data = [];
 
+    public $asset;
+
+    public function __construct()
+    {
+        $this->asset = new Asset();
+    }
+
     /**
      * Получение пути текущей темы
      *
      * @return string
      */
-    public function getUrl()
+    public static function getUrl()
     {
         $currentTheme = Config::item('defaultTheme');
 

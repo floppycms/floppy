@@ -23,6 +23,26 @@ class SettingRepository extends Model
     }
 
     /**
+     * Поулчение значения настройки
+     *
+     * @param string $key_setting
+     * @return string|null
+     */
+    public function getSettingValue($key_setting)
+    {
+        $sql = $this->queryBuilder
+            ->select('value')
+            ->from('setting')
+            ->where('key_field', $key_setting)
+            ->limit(1)
+            ->sql();
+
+        $row = $this->db->query($sql, $this->queryBuilder->values);
+
+        return isset($row[0]) ? $row[0]['value'] : null;
+    }
+
+    /**
      * Обновление настроек в БД
      *
      * @param array $params

@@ -25,6 +25,9 @@ class View
      */
     public function render($template, $vars = [])
     {
+        //функции темы
+        require_once ROOT_DIR . '/' . $this->theme->getUrl() . '/functions.php';
+
         //полный путь к представлению
         $templatePath = $this->getTemplatePath($template);
 
@@ -72,4 +75,5 @@ class View
                 return ROOT_DIR . '/' . strtolower(ENV) . '/Views/' . $template . '.php';
         }
     }
+
 }
