@@ -2,6 +2,8 @@
 
 namespace Core\Libs\Template;
 
+use \Core\Libs\Config\Config;
+
 class Theme
 {
     const RULES_NAME_FILE = [
@@ -9,6 +11,8 @@ class Theme
         'footer' => 'footer-%s',
         'sidebar' => 'sidebar-%s',
     ];
+
+    const THEME_MASK_URL = '/content/themes/%s';
 
     /**
      * URL текущей темы
@@ -24,6 +28,17 @@ class Theme
      */
     protected $data = [];
 
+    /**
+     * Получение пути текущей темы
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        $currentTheme = Config::item('defaultTheme');
+
+        return sprintf(self::THEME_MASK_URL, $currentTheme);
+    }
     /**
      * Подключение хедера
      *

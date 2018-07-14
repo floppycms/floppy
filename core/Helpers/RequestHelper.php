@@ -42,7 +42,7 @@ class RequestHelper
      *
      * @return string
      */
-    public function getPathUrl()
+    public static function getPathUrl()
     {
         $pathUrl = $_SERVER['REQUEST_URI'];
 

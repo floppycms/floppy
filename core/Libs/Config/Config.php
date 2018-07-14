@@ -11,7 +11,7 @@ class Config
      * @param string $group Имя файла настроек
      * @return mixed|null
      */
-    public static function item($key, $group = 'items')
+    public static function item($key, $group = 'main')
     {
         $items = static::file($group);
 
