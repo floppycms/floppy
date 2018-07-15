@@ -10,10 +10,13 @@ class View
 
     protected $theme;
 
+    protected $setting;
+
     public function __construct(\Core\DI\DI $di)
     {
         $this->di = $di;
         $this->theme = new Theme();
+        $this->setting = new Setting($this->di);
     }
 
     /**
@@ -26,7 +29,11 @@ class View
     public function render($template, $vars = [])
     {
         //функции темы
-        require_once ROOT_DIR . '/' . $this->theme->getUrl() . '/functions.php';
+        $funcPath = ROOT_DIR . '/' . $this->theme->getUrl() . '/functions.php';
+
+        if(file_exists($funcPath)){
+            require_once $funcPath;
+        }
 
         //полный путь к представлению
         $templatePath = $this->getTemplatePath($template);

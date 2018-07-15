@@ -23,17 +23,17 @@ class SettingRepository extends Model
     }
 
     /**
-     * Поулчение значения настройки
+     * Получение значения настройки по ключу
      *
-     * @param string $key_setting
+     * @param string $keySetting
      * @return string|null
      */
-    public function getSettingValue($key_setting)
+    public function getSettingValue($keySetting)
     {
         $sql = $this->queryBuilder
             ->select('value')
             ->from('setting')
-            ->where('key_field', $key_setting)
+            ->where('key_field', $keySetting)
             ->limit(1)
             ->sql();
 

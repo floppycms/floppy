@@ -2,6 +2,9 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+class_alias('Core\Libs\Template\Asset', 'Asset');
+class_alias('Core\Libs\Template\Setting', 'APP');
+
 use Core\Application;
 use Core\DI\DI;
 

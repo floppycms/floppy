@@ -1,5 +1,6 @@
 <?php
 
-$this->theme->asset::css('/assets/styles/blog');
+Asset::css('/assets/styles/blog');
 
-$this->theme->asset::js('/assets/js/holder.min');
+Asset::js('/assets/js/holder.min');
+
