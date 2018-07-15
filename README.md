@@ -1,1 +1,1 @@
-# EasyCMS
+# FloppyCMS
